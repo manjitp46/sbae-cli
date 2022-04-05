@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "sbae-cli": "./src/sbae-cli.js"
+    "sbae-cli": "./src/sbae_cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
