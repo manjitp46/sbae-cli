@@ -20,7 +20,7 @@ function processArgs() {
             if (argv._ && argv._[0]) {
                 const folder = argv.folder && expandHomeDir(argv.folder);
 
-                console.log(folder);
+                
                 cliHandler.listFiles(folder);
                 // cliHandler.executeESSearch(env, index, query);
             }
