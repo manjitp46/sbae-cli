@@ -54,15 +54,15 @@ async function getFileListFromAFolder(folderPath, fileExtension = '*') {
 function getMaxOfJson(jsonalreadyparsed, property) {
     var max = null;
     var maxElement = {};
-    for (var i=0 ; i<jsonalreadyparsed.length ; i++) {
+    for (var i = 0; i < jsonalreadyparsed.length; i++) {
 
-            if(max == null){
-                
-                max = jsonalreadyparsed[i][property];
-                maxElement = jsonalreadyparsed[i];
-            } else {
+        if (max == null) {
 
-            if (parseFloat(jsonalreadyparsed[i][property]) > max){
+            max = jsonalreadyparsed[i][property];
+            maxElement = jsonalreadyparsed[i];
+        } else {
+
+            if (parseFloat(jsonalreadyparsed[i][property]) > max) {
 
                 max = jsonalreadyparsed[i][property];
                 maxElement = jsonalreadyparsed[i];
@@ -78,6 +78,9 @@ function getMaxOfJson(jsonalreadyparsed, property) {
 async function getLargestNVMEDrive() {
     try {
         var response = await si.diskLayout();
+        response = response.filter((item, index) => {
+            return item.type === 'NVMe';
+        })
         response = getMaxOfJson(response, 'size')
         console.log(JSON.stringify(response, null, 4));
     } catch (error) {
